@@ -1,0 +1,26 @@
+{
+  "name": "cy_automationexercise_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javiandriu94/Cy_AutomationExercise_App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/javiandriu94/Cy_AutomationExercise_App/issues"
+  },
+  "homepage": "https://github.com/javiandriu94/Cy_AutomationExercise_App#readme",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.2.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.5",
+    "cypress": "^14.5.2",
+    "esbuild": "^0.25.8"
+  }
+}
