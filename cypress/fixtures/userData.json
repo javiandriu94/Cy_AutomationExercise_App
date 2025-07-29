@@ -1,0 +1,14 @@
+{
+    "user": {
+        "name": "Jorge",
+        "password": 12345,
+        "firstName": "Javier",
+        "lastName": "Gonzalez",
+        "company": "Google",
+        "address": "123 Alabama",
+        "state":"Wisconsin",
+        "city":"Guayaquil",
+        "zipcode":123,
+        "mobileNumber": 988671712
+    }
+}
