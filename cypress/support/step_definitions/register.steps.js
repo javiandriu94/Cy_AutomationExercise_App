@@ -7,7 +7,7 @@ import NavbarModules from "../../modules/NavbarModules.js";
 const createAccount = new CreateAccountPage();
 const newUserSignUp = new NewUserSignUpPage()
 const navbar = new NavbarModules()
-
+const email = newUserSignUp.getEmail();
 let userData;
 
 before(() => {
@@ -25,7 +25,7 @@ When("the user navigates to the registration form", () => {
     newUserSignUp.accessToSignUp(userData)
     newUserSignUp.clickSignUpButton()
 
-     const email = newUserSignUp.getEmail();
+     
       createAccount.setEmail(email);
 
       cy.location('pathname').should('include', '/signup');

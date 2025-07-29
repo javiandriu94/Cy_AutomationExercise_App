@@ -16,6 +16,7 @@ class CreateAccountPage {
 
   verifyRegisterTitle() {
     this.register.registerWelcomeTitle.should('contain', "Enter Account Information");
+    this.register.maleRadioButton.click();
   }
 
   verifyDataRegistered(data){
@@ -24,7 +25,6 @@ class CreateAccountPage {
   }
 
     fillRegisterForm (data) {
-            this.register.maleRadioButton.check();
             this.register.passwordInput.type(data.password);
             this.register.dropdownDays;
             this.register.dropdownMonths;
