@@ -1,7 +1,6 @@
 {
     "user": {
         "name": "Jorge",
-        "password": 12345,
         "firstName": "Javier",
         "lastName": "Gonzalez",
         "company": "Google",

@@ -12,6 +12,8 @@ class LoginModules {
         return cy.get('[data-qa="login-button"]')
     }
 
+    
+
    
 
 }

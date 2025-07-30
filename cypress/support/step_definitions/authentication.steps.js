@@ -1,13 +1,15 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import CreateAccountPage from "../../e2e/pages/CreateAccountPage.js";
 import NewUserSignUpPage from "../../e2e/pages/NewUserSignUpPage.js";
+import LoginPage from "../../e2e/pages/LoginPage.js";
 import NavbarModules from "../../modules/NavbarModules.js";
 
 
 const createAccount = new CreateAccountPage();
 const newUserSignUp = new NewUserSignUpPage()
+const login = new LoginPage();
 const navbar = new NavbarModules()
-const email = newUserSignUp.getEmail();
+
 let userData;
 
 before(() => {
@@ -18,17 +20,16 @@ before(() => {
 
 Given("the user is on the homepage", () => {
   cy.visit("/");
+  navbar.signup_login_link.click()
 });
 
 When("the user navigates to the registration form", () => {
-    navbar.signup_login_link.click()
+    
     newUserSignUp.accessToSignUp(userData)
     newUserSignUp.clickSignUpButton()
-
-     
-      createAccount.setEmail(email);
-
-      cy.location('pathname').should('include', '/signup');
+    const email = newUserSignUp.getEmail();
+    createAccount.setEmail(email);
+    cy.location('pathname').should('include', '/signup');
 });
 
 When("fills the registration form with valid data", () => {
@@ -44,3 +45,15 @@ Then("the user should see the message {string}", () => {
     createAccount.verifySuccessMessage()
 });
 
+
+When("the user enter valid credentials", () => {
+    login.fillLoginForm();
+    login.submitLogin();
+})
+
+Then("the user should be redirected to the home page", () => {
+  cy.location('pathname').should('include', '/');
+
+  navbar.logoutLink.should('be.visible');
+  navbar.deleteAccountLink.should('be.visible');
+})
