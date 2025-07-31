@@ -11,3 +11,5 @@ Feature: User Authentication
     Given the user is on the homepage
     When the user enter valid credentials
     Then the user should be redirected to the home page
+    
+  

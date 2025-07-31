@@ -1,9 +1,11 @@
 import LoginModules from "../../modules/LoginModules";
+import NavbarModules from "../../modules/NavbarModules";
 
 
 class LoginPage {
     constructor() {
         this.login = new LoginModules();
+        this.navbar = new NavbarModules();
     }
 
     fillLoginForm() {
@@ -21,6 +23,11 @@ class LoginPage {
         this.login.loginButton.click();
         this.login.logo
     }
+
+   
+    
+
+    
 }
 
 export default LoginPage;

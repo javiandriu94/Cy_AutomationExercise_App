@@ -3,12 +3,14 @@ import CreateAccountPage from "../../e2e/pages/CreateAccountPage.js";
 import NewUserSignUpPage from "../../e2e/pages/NewUserSignUpPage.js";
 import LoginPage from "../../e2e/pages/LoginPage.js";
 import NavbarModules from "../../modules/NavbarModules.js";
+import LoggedUserPage from "../../e2e/pages/LoggedUserPage.js";
 
 
 const createAccount = new CreateAccountPage();
 const newUserSignUp = new NewUserSignUpPage()
 const login = new LoginPage();
 const navbar = new NavbarModules()
+const logged = new LoggedUserPage()
 
 let userData;
 
@@ -53,7 +55,9 @@ When("the user enter valid credentials", () => {
 
 Then("the user should be redirected to the home page", () => {
   cy.location('pathname').should('include', '/');
-
-  navbar.logoutLink.should('be.visible');
-  navbar.deleteAccountLink.should('be.visible');
+  navbar.deleteAccountLink .should('be.visible');
+  logged.verifyLoggedInUserName(userData);
+  logged.logoutUser();
+  
+  
 })
