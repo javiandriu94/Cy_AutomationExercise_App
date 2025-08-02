@@ -8,6 +8,9 @@ class CartPage {
         this.navbar = new NavbarModules();
     }
 
+    
+
+
 
 }
 

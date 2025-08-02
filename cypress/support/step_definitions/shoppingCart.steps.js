@@ -33,14 +33,12 @@ Given("the user adds the product to the cart", () => {
   login.passwordLoginInput.type(userLogged.password);
   login.loginButton.click();
   logged.verifyLoggedInUserName(userData);
-  productPage.addProductToCart(product.featuredProduct1);
-  productPage.addProductToCart(product.featuredProduct5);
-  productPage.addProductToCart(product.featuredProduct9);
-  productPage.verifyAddedModal();
-
+  productPage.addProductToCart()
 
 });
 
 When("the user navigates to the shopping cart", () => {
-  navbar.shoppingCartLink.click();
+  cy.location('pathname').should('include', '/view_cart');
+  cart.shoppingCartBredcrumb.should('be.visible');
+
 });

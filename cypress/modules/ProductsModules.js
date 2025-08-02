@@ -1,15 +1,7 @@
 class ProductsModules {
 
-    get featuredProduct1() {
-        return cy.get('.features_items .product-image-wrapper ').eq(0)
-    }
-
-    get featuredProduct5() {
-        return cy.get('.features_items .product-image-wrapper ').eq(4)
-    }
-
-    get featuredProduct9() {
-        return cy.get('.features_items .product-image-wrapper ').eq(9)
+    get featuredProducts() {
+    return [0, 4, 9].map(index => cy.get('.features_items .product-image-wrapper ').eq(index));
     }
 
     get continueShoppingButton() {
