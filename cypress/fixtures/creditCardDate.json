@@ -1,0 +1,9 @@
+{
+    "card": {
+        "cardName": "Mastercard",
+        "cardNumber": "4242 4242 4242 4242",
+        "expiryMonth": "12",
+        "expiryYear": "2025",
+        "cvc": "123"
+    }
+}

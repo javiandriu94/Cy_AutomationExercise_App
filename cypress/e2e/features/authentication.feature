@@ -5,7 +5,7 @@ Feature: User Authentication
     Given the user is on the homepage
     When the user navigates to the registration form
     And fills the registration form with valid data
-    Then the user should see the message "Account Created!"
+    Then the registration should be successful
 
   Scenario: User can log in with valid credentials
     Given the user is on the homepage

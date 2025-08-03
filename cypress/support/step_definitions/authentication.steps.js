@@ -42,7 +42,7 @@ When("fills the registration form with valid data", () => {
    
 });
 
-Then("the user should see the message {string}", () => {
+Then("the registration should be successful", () => {
     cy.location('pathname').should('include', '/account_created');
     createAccount.verifySuccessMessage()
 });

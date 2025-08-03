@@ -1,11 +1,11 @@
 class CartModules {
 
     get shoppingCartBredcrumb() {
-        return cy.get('.shop-menu > .nav > :nth-child(3) > a').contains('Shopping Cart');
+        return cy.get('.active').contains('Shopping Cart');
     }
-    
+
     get proceedToCheckoutButton() {
-        return cy.get('.btn.btn-default.check_out').contains('Proceed To Checkout');
+        return cy.get('.col-sm-6 > .btn').contains('Proceed To Checkout');
     }
 
     get cartInfoTable() {

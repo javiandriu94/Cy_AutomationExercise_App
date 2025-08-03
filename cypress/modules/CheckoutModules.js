@@ -1,6 +1,6 @@
 class CheckoutModules {
     get checkoutBreadcrumb() {
-        return cy.get('.shop-menu > .nav > :nth-child(4) > a').contains('Checkout');
+        return cy.get('.active').contains('Checkout');
     }
 
     get addressDetailsTitle() {
