@@ -10,35 +10,53 @@ class ProductsPage {
         this.cartItems = [];
         Cypress.env('cartItems', []);
     }
-    
-    addProductToCart() {
-        const featuredProducts = this.product.featuredProducts;
-        featuredProducts.forEach((product, index) => {
-            product.then($item => {
-                cy.wrap($item).realHover();
-                  const productName = $item.find('.productinfo p').first().text().trim();
 
-                const existingItem = this.cartItems.find(item => item.name === productName);
+    addProductToCart(indices = [0, 4, 9], currentIndex = 0) {
+        if (currentIndex >= indices.length) {
+            // Guardar en variable de entorno para otros steps si lo necesitas
+            Cypress.env('cartItems', this.cartItems);
+            this.clickViewCart();
+            return;
+        }
+
+        // Asegura que los productos están renderizados
+        cy.get('.features_items .product-image-wrapper').should('have.length.greaterThan', 9)
+            .then($products => {
+            const $item = $products.eq(indices[currentIndex]);
+
+            cy.wrap($item).scrollIntoView().realHover();
+
+            cy.wrap($item).find('.productinfo p').first().invoke('text').then(productName => {
+                const name = productName.trim();
+
+                // Almacena producto en el carrito de la clase
+                const existingItem = this.cartItems.find(item => item.name === name);
                 if (existingItem) {
-                    existingItem.quantity += 1;
+                existingItem.quantity += 1;
                 } else {
-                    this.cartItems.push({ name: productName, quantity: 1 });
+                this.cartItems.push({ name, quantity: 1 });
                 }
 
+                // Click en botón "Add to cart"
                 cy.wrap($item).contains('Add to cart').click({ force: true });
 
-                this.verifyAddedModal()
+                // Verifica modal
+                this.verifyAddedModal();
 
-                if (index === featuredProducts.length - 1) {
-                    Cypress.env('cartItems', this.cartItems);
-                    this.clickViewCart();
-                } else {
-                    this.clickContinueShopping();
+                if (currentIndex < indices.length - 1) {
+                this.clickContinueShopping();
+                cy.wait(500); // Espera para evitar que el modal interfiera
                 }
-            })
-        })
-    }
 
+                // Llama recursivamente al siguiente producto
+                cy.then(() => {
+                this.addProductToCart(indices, currentIndex + 1);
+                });
+            });
+            });
+    }
+    
+     
     
     verifyAddedModal() {
         this.product.addedMessage.should('be.visible');

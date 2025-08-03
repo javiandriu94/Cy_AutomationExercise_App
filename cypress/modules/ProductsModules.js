@@ -1,7 +1,7 @@
 class ProductsModules {
 
     get featuredProducts() {
-    return [0, 4, 9].map(index => cy.get('.features_items .product-image-wrapper ').eq(index));
+        return [0, 4, 9].map(index => cy.get('.features_items .product-image-wrapper ').eq(index));
     }
 
     get continueShoppingButton() {

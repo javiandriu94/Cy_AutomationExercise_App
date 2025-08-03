@@ -1,4 +1,4 @@
-import PaymentModules from '../modules/PaymentModules';
+import PaymentModules from "../../modules/PaymentModules.js";
 
 class PaymentPage {
     constructor() {
@@ -9,23 +9,22 @@ class PaymentPage {
         this.payment.paymentBreadcrumb.should('be.visible');
     }
 
-    fillPaymentForm() {
-        const cardData = Cypress.env('card');
-
-        expect(cardData.cardName, 'card name should not be null or undefined').to.be.a('string');
-        expect(cardData.cardNumber, 'card number should not be null or undefined').to.be.a('string');
-        expect(cardData.expiryMonth, 'expiry month should not be null or undefined').to.be.a('string');
-        expect(cardData.expiryYear, 'expiry year should not be null or undefined').to.be.a('string');
-        expect(cardData.cvc, 'cvc should not be null or undefined').to.be.a('string');
-
+    fillPaymentForm(cardData) {
+        this.payment.inputCardName.should('be.visible');
+        this.payment.inputCardNumber.should('be.visible');
+        this.payment.inputExpiryMonth.should('be.visible');
+        this.payment.inputExpiryYear.should('be.visible');
+        this.payment.inputCVC.should('be.visible');
         this.payment.inputCardName.type(cardData.cardName);
-        this.payment.inputCardNumber.type(cardData.number);
+        this.payment.inputCardNumber.type(cardData.cardNumber);
         this.payment.inputExpiryMonth.type(cardData.expiryMonth);
         this.payment.inputExpiryYear.type(cardData.expiryYear);
         this.payment.inputCVC.type(cardData.cvc);
+        
     }
 
     submitPayment() {
+        this.payment.payAndConfirmButton.should('be.visible');
         this.payment.payAndConfirmButton.click();
     }
 

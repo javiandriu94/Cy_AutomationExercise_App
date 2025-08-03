@@ -15,10 +15,6 @@ class CheckoutModules {
         return cy.get('#address_delivery > li > :nth-child(1)');
     }
 
-    get deliveryAddressName () {
-        return cy.get('#address_delivery > li > :nth-child(3)');
-    }
-
      get deliveryAddressName () {
         return cy.get('#address_delivery > li > :nth-child(3)');
     }
