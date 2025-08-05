@@ -1,4 +1,4 @@
-import { Given, When, Then} from "@badeball/cypress-cucumber-preprocessor";
+import {Before, Given, When, Then} from "@badeball/cypress-cucumber-preprocessor";
 import NavbarModules from "../../modules/NavbarModules";
 import CartPage from "../../e2e/pages/CartPage.js";
 import LoggedUserPage from "../../e2e/pages/LoggedUserPage.js";
@@ -20,7 +20,7 @@ let userLogged;
 let userData;
 let cardData;
 
-before(() => {
+Before({tags: "@shoppingCart"}, () => {
   cy.fixture("userLogin").then(data => {
     userLogged = data.user;
   });

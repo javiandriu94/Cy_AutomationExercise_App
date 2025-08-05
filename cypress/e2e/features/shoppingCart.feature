@@ -1,5 +1,6 @@
 Feature: User buys products and checks out
-
+  
+  @shoppingCart
   Scenario: User adds products to the shopping cart successfully
     Given the user adds a product to the cart
     When checkouts the product in the cart
