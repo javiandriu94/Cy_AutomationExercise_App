@@ -4,6 +4,10 @@ class NavbarModules {
         return cy.get('a[href="/login"]').contains('Signup / Login')
     }
 
+    get homeLink() {
+        return cy.get('[href="/"]').contains('Home')
+    }
+
      get cartLink () {
         return cy.get('.shop-menu > .nav > :nth-child(3) > a')
         

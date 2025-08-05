@@ -41,6 +41,8 @@ before(() => {
     login.passwordLoginInput.type(userLogged.password);
     login.loginButton.click();
     logged.verifyLoggedInUserName(userData);
+    navbar.cartLink.click();
+    cart.deleteAllItemsFromCart()
   });
 });
  

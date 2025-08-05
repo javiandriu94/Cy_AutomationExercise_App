@@ -10,7 +10,23 @@ class CartPage {
         this.product = new ProductsPage();
     }
 
-    
+    deleteAllItemsFromCart() {
+        cy.get('body').then(($body) => {
+            const $deleteButtons = $body.find('.cart_quantity_delete');
+            if ($deleteButtons.length > 0) {
+            // Hacer clic en el primero
+                cy.wrap($deleteButtons[0]).click();
+                // Esperar a que el DOM se actualice y luego repetir
+                cy.wait(500); 
+                deleteAllItemsFromCart();
+            } else {
+                cy.contains('Cart is empty!').should('be.visible');
+                this.navbar.homeLink.click();
+            }
+        });
+    }
+
+   
 
     verifyShoppingCartBreadcrumb() {
         this.cart.shoppingCartBredcrumb.should('be.visible');

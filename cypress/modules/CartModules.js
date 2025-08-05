@@ -15,6 +15,10 @@ class CartModules {
     get cartQuatityDeleteButton() {
         return cy.get('.cart_quantity_delete');
     }
-}
+
+    get cartEmptyMessage() {
+        return cy.get('#empty_cart')
+    }
+} 
 
 export default CartModules;
